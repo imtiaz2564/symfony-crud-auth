@@ -51,8 +51,8 @@ class UserController extends AbstractController
 
 // @todo: refactor
             $entityManager = $this->getDoctrine()->getManager();
-            $plainpwd = $user->getPassword();
-            $encoded = $this->passwordEncoder->encodePassword($user, $plainpwd);
+            $password = $user->getPassword();
+            $encoded = $this->passwordEncoder->encodePassword($user, $password);
             $user->setPassword($encoded);
             $entityManager->persist($user);
             $entityManager->flush();
@@ -89,8 +89,8 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             //$this->getDoctrine()->getManager()->flush();
             $entityManager = $this->getDoctrine()->getManager();
-            $plainpwd = $user->getPassword();
-            $encoded = $this->passwordEncoder->encodePassword($user,$plainpwd);
+            $password = $user->getPassword();
+            $encoded = $this->passwordEncoder->encodePassword($user,$password);
             $user->setPassword($encoded);
 
             $entityManager->persist($user);
